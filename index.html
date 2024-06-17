@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 200px;
+      height: 300px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      background-color: #fff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+  <title>Random Card Generator</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Random Card Generator</h5>
+            <p class="card-text" id="cardDisplay">
+              <!-- Card content will be inserted here -->
+            </p>
+            <a href="#" class="btn btn-primary" onclick="updateCardDisplay()">Generate New Card</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // JavaScript code for generating random card
+    const suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+    const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+
+    function getRandomCard() {
+      const randomSuitIndex = Math.floor(Math.random() * suits.length);
+      const suit = suits[randomSuitIndex];
+
+      const randomValueIndex = Math.floor(Math.random() * values.length);
+      const value = values[randomValueIndex];
+
+      return `${value} of ${suit}`;
+    }
+
+    // Function to update the card display
+    function updateCardDisplay() {
+      const cardDisplay = document.getElementById('cardDisplay');
+      cardDisplay.textContent = getRandomCard();
+    }
+
+    // Initial card display on page load
+    updateCardDisplay();
+  </script>
+</body>
+</html>
